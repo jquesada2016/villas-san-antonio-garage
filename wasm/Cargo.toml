@@ -9,7 +9,12 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 console_error_panic_hook = "0.1"
+firebase-wasm = "0.8"
+js-sys = "0.3"
 leptos = "0.2"
+leptos_daisyui_components = { path = "/dev/rust/crates/leptos_daisy_ui_components/components" }
+leptos_declarative = "0.1"
+leptos_tea = "0.3"
 tracing = "0.1"
 tracing-subscriber = "0.3"
 tracing-subscriber-wasm = "0.1"
