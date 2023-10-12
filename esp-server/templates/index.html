@@ -1,0 +1,28 @@
+{% extends "scaffold.html" %}
+
+{% block body %}
+<main class="flex-grow flex flex-col items-center justify-center gap-8">
+  <div>
+    <div class="form-control w-full max-w-xs">
+      <label class="label" for="press_duration">
+        <span class="label-text">Press Duration (ms)</span>
+      </label>
+
+      <input class="input input-primary input-bordered" id="press_duration" type="number" value="{{ press_duration }}"
+        _="on input set value to my value then fetch `/set-press-duration?value=${value}`">
+    </div>
+
+
+    <div class="form-control w-full max-w-xs">
+      <label class="label" for="duty_cycle">
+        <span class="label-text">Duty Cycle (%)</span>
+      </label>
+
+      <input class="input input-primary input-bordered" id="duty_cycle" name="duty_cycle" type="number"
+        value="{{ duty_cycle }}" _="on input set value to my value then fetch `/set-duty-cycle?value=${value}`">
+    </div>
+  </div>
+
+  <button class="btn btn-primary btn-xl" _="on click fetch '/press'">Click Me</button>
+</main>
+{% endblock %}
