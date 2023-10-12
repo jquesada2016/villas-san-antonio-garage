@@ -2,8 +2,6 @@
 #![allow(clippy::await_holding_lock)]
 
 #[macro_use]
-extern crate askama;
-#[macro_use]
 extern crate log;
 
 use askama::Template;
@@ -12,10 +10,7 @@ use embedded_svc::{
   utils::asyncify::Asyncify,
 };
 use esp_idf_hal::{
-  ledc::{
-    self,
-    LedcDriver,
-  },
+  ledc::{self,},
   prelude::*,
 };
 use esp_idf_svc::{
@@ -26,14 +21,8 @@ use esp_idf_svc::{
   wifi,
 };
 use esp_idf_sys as _;
-use std::sync::{
-  Arc,
-  Mutex,
-}; /* If using the `binstart` feature of `esp-idf-sys`, always keep this module imported */
-use tokio::sync::mpsc::{
-  unbounded_channel,
-  Sender,
-};
+use std::sync::Mutex; /* If using the `binstart` feature of `esp-idf-sys`, always keep this module imported */
+use tokio::sync::mpsc::unbounded_channel;
 
 const PRESS_DURATION_KEY: &str = "press_duration";
 const DUTY_CYCLE_KEY: &str = "duty_cycle_key";
@@ -204,7 +193,7 @@ fn home_handler(
 }
 
 fn set_press_duration_handler(
-  mut req: e_server::Request<&mut server::EspHttpConnection>,
+  req: e_server::Request<&mut server::EspHttpConnection>,
 ) -> e_server::HandlerResult {
   info!("handling `/set-press-duration`");
 
